@@ -1,6 +1,8 @@
 package com.example.demo.config;
 
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -31,12 +33,15 @@ public class SecurityConfig {
                 ).oauth2Login(Customizer.withDefaults());
         return http.build();
     }
-
+    @Value("${clientId}")
+    private String clientId;
+    @Value("${clientSecret}")
+    private String clientSecret;
 
     private ClientRegistration googleClientRegistration() {
         return ClientRegistration.withRegistrationId("google")
-                .clientId("")
-                .clientSecret("")
+                .clientId(clientId)
+                .clientSecret(clientSecret)
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .redirectUri("{baseUrl}/login/oauth2/code/{registrationId}")
