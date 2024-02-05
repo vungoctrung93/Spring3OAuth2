@@ -35,8 +35,8 @@ public class SecurityConfig {
 
     private ClientRegistration googleClientRegistration() {
         return ClientRegistration.withRegistrationId("google")
-                .clientId("60544376671-4iro37hss3f39f3fenig8ps6ia0qvup6.apps.googleusercontent.com")
-                .clientSecret("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")
+                .clientId("")
+                .clientSecret("")
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .redirectUri("{baseUrl}/login/oauth2/code/{registrationId}")
