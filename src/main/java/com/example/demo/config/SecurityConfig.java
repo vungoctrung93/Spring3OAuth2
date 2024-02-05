@@ -33,6 +33,8 @@ public class SecurityConfig {
                 ).oauth2Login(Customizer.withDefaults());
         return http.build();
     }
+
+    // get data from application.properties
     @Value("${clientId}")
     private String clientId;
     @Value("${clientSecret}")
